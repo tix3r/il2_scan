@@ -51,9 +51,9 @@ jobs:
           if-no-files-found: error
 
       - name: Publish release for version tag
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
         run: |
-          gh release upload "${{ github.ref_name }}" "il2_scan.exe" --clobber
+          gh release upload "v2.1" "il2_scan.exe" --clobber
