@@ -56,4 +56,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: pwsh
         run: |
-          gh release create "${{ github.ref_name }}" 'il2_scan.exe' --title "il2_scan ${{ github.ref_name }}" --notes "Windows executable built automatically from the tagged source code." --verify-tag
+          gh release upload "${{ github.ref_name }}" "il2_scan.exe" --clobber
